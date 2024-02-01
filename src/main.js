@@ -1,4 +1,8 @@
 import "./style.css";
+import { Video } from "./components/VideoComponente/Video.js";
+import { Barra } from "./components/Barra/Barra.js";
+import { Controls } from "./components/Controls/Controls.js";
+
 window.onload;
 const videos = [
   "./video/helicoptero.mp4",
@@ -6,20 +10,9 @@ const videos = [
   "./video/oceano.mp4",
 ];
 document.querySelector("#app").innerHTML = `
-  <video src="${videos[0]}" controls autoplay   id="video"></video>
-  <div class="barra01">
-    <div class="barra01"></div>
-  </div>
-
-  <div class="controls">
-  <div></div> 
-  <div></div>
-  </div>
-
+  ${Video(videos[0])}
+  ${Barra}
+  ${Controls}
 `;
-
-const video = document.getElementById("video");
-
-function pause() {}
 
 setupCounter(document.querySelector("#counter"));
