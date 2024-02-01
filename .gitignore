@@ -175,4 +175,7 @@ dist
 .history
 .ionide
 
+## personal
+estilos.md
+
 # End of https://www.toptal.com/developers/gitignore/api/node,git,visualstudiocode
