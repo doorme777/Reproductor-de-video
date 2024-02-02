@@ -11,8 +11,11 @@ const videos = [
 ];
 document.querySelector("#app").innerHTML = `
   ${Video(videos[0])}
-  ${Barra}
-  ${Controls}
+
+  <div class="video-footer">
+    ${Barra}
+    ${Controls}
+  </div>
 `;
 
 setupCounter(document.querySelector("#counter"));

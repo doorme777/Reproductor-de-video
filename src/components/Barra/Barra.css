@@ -1,0 +1,13 @@
+.barra1 {
+  position: relative;
+
+  height: 6px;
+  width: 98%;
+  background-color: #a0a0a0;
+  transition: 1.2s ease-in;
+}
+
+.barra1:hover,
+.barra1:hover {
+  height: 6.75px;
+}
