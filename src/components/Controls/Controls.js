@@ -2,12 +2,12 @@ import "./Controls.css";
 
 // aquí la clase para transformar a pause fa-pause
 // También aquí esta el compres para expand fa-compress
-export function Controls(videos) {
+export function Controls(play) {
   return `
     <div class="controls">
       <div>
         <i class="fa-solid fa-backward fa-lg"></i>
-        <i class="fa-solid fa-play fa-lg"></i>
+        <i id="play" class="fa-solid fa-play fa-lg"></i>
         <i class="fa-solid fa-forward fa-lg"></i>
         00:00 / 00:00
       </div> 

@@ -18,4 +18,30 @@ document.querySelector("#app").innerHTML = `
   </div>
 `;
 
-setupCounter(document.querySelector("#counter"));
+const video = document.getElementById("video");
+const playIcon = document.getElementById("play");
+
+playIcon.addEventListener("click", playVideo);
+document.addEventListener("keydown", playVideo);
+video.addEventListener("click", playVideo);
+//KeyboardEvent
+
+function playVideo() {
+  if (video.paused) {
+    video.play();
+    changeIcon("fa-play", "fa-pause", playIcon);
+  } else {
+    video.pause();
+    changeIcon("fa-pause", "fa-play", playIcon);
+  }
+}
+
+function changeIcon(removeClass, changeClass, element) {
+  console.log({
+    removeClass,
+    changeClass,
+    element,
+  });
+  element.classList.remove(removeClass);
+  element.classList.add(changeClass);
+}
