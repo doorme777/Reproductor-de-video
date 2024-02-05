@@ -9,12 +9,12 @@ export function Controls(play) {
         <i class="fa-solid fa-backward fa-lg"></i>
         <i id="play" class="fa-solid fa-play fa-lg"></i>
         <i class="fa-solid fa-forward fa-lg"></i>
-        00:00 / 00:00
+        <div class="estado"></div>
       </div> 
 
       <div>
        <i class="fa-solid fa-gear fa-lg"></i>
-       <i class="fa-solid fa-expand fa-lg"></i>
+       <i id="expand" class="fa-solid fa-expand fa-lg"></i>
       </div>
     </div>
     `;

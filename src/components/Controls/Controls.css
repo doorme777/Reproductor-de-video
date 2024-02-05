@@ -16,3 +16,7 @@
 .controls:last-child i {
   padding-inline: 2px;
 }
+
+.estado {
+  display: inline-block;
+}
