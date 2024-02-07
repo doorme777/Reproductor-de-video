@@ -1,8 +1,5 @@
 import "./style.css";
-import { Video } from "./components/VideoComponente/Video.js";
-import { Barra } from "./components/Barra/Barra.js";
-import { Controls } from "./components/Controls/Controls.js";
-
+import { App } from "./components/app";
 window.onload;
 const VIDEOS_ARRAY = [
   "./video/helicoptero.mp4",
@@ -12,12 +9,8 @@ const VIDEOS_ARRAY = [
 let current = 0;
 
 document.querySelector("#app").innerHTML = `
-  ${Video(VIDEOS_ARRAY[current])}
+  ${App(VIDEOS_ARRAY[current])}
 
-  <div class="video-footer">
-    ${Barra}
-    ${Controls}
-  </div>
 `;
 
 // Elements
@@ -82,6 +75,7 @@ function forward() {
   if (current < VIDEOS_ARRAY.length - 1) {
     ++current;
     VIDEO.src = VIDEOS_ARRAY[current];
+    playVideo();
   }
 }
 
@@ -89,6 +83,7 @@ function backward() {
   if (current > 0) {
     --current;
     VIDEO.src = VIDEOS_ARRAY[current];
+    playVideo();
   }
 }
 
