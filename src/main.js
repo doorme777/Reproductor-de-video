@@ -17,6 +17,7 @@ const FORWARD = document.querySelector(".fa-forward ");
 const BACKWARD = document.querySelector(".fa-backward");
 const FULL_DISPLAY = document.getElementById("expand");
 const LOADER = document.querySelector(".loader");
+const CONTAINER = document.querySelector(".container");
 document.querySelector(".barra-invisible").onclick = searchMinute;
 VIDEO.ontimeupdate = updateTime;
 VIDEO.onloadeddata = updateTime;
@@ -43,7 +44,6 @@ document.addEventListener("keydown", function (event) {
     console.log("Tecla de flecha hacia abajo presionada");
   }
   if (event.key === " ") {
-    console.log("Tecla de espacio presionada");
     playVideo();
   }
   if (event.key === "f" || event.key === "F") {
@@ -65,16 +65,10 @@ VIDEO.addEventListener("dblclick", toggleFullScreen);
 function playVideo() {
   if (video.paused) {
     video.play();
-    changeIcon("fa-play", "fa-pause", PLAY_ICON);
-  } else {
-    video.pause();
-    changeIcon("fa-pause", "fa-play", PLAY_ICON);
+    PLAY_ICON.classList.replace("fa-play", "fa-pause");
   }
-}
-
-function changeIcon(removeClass, changeClass, element) {
-  element.classList.remove(removeClass);
-  element.classList.add(changeClass);
+  video.pause();
+  PLAY_ICON.classList.replace("fa-pause", "fa-play");
 }
 
 function forward() {
@@ -93,54 +87,15 @@ function backward() {
   }
 }
 
-function adjustSize() {
-  let anchoVentana =
-    window.innerWidth ||
-    document.documentElement.clientWidth ||
-    document.body.clientWidth;
-  let altoVentana =
-    window.innerHeight ||
-    document.documentElement.clientHeight ||
-    document.body.clientHeight;
-
-  VIDEO.width = anchoVentana;
-  VIDEO.height = altoVentana;
-}
-
 function toggleFullScreen() {
-  if (
-    document.fullscreenElement ||
-    document.webkitFullscreenElement ||
-    document.mozFullScreenElement ||
-    document.msFullscreenElement
-  ) {
-    // Si ya está en pantalla completa, salir de ella
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    } else if (document.webkitExitFullscreen) {
-      document.webkitExitFullscreen();
-    } else if (document.mozCancelFullScreen) {
-      document.mozCancelFullScreen();
-    } else if (document.msExitFullscreen) {
-      document.msExitFullscreen();
-    }
-  } else {
-    // Si no está en pantalla completa, entrar en ella
-    if (video.requestFullscreen) {
-      video.requestFullscreen();
-    } else if (video.webkitRequestFullscreen) {
-      video.webkitRequestFullscreen();
-    } else if (video.mozRequestFullScreen) {
-      video.mozRequestFullScreen();
-    } else if (video.msRequestFullscreen) {
-      video.msRequestFullscreen();
-    }
+  CONTAINER.classList.toggle("toggleFullScren");
+  if (document.fullscreenElement) {
+    FULL_DISPLAY.classList.replace("fa-compress", "fa-expand");
+    return document.exitFullscreen();
   }
+  FULL_DISPLAY.classList.replace("fa-expand", "fa-compress");
+  CONTAINER.requestFullscreen();
 }
-
-adjustSize();
-
-window.addEventListener("resize", adjustSize);
 
 function updateTime() {
   const TIME = `${conversion(VIDEO.currentTime)} / ${conversion(
