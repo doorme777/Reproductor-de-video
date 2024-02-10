@@ -2,16 +2,13 @@ import "./style.css";
 import { App } from "./components/app";
 window.onload;
 const VIDEOS_ARRAY = [
-  "./video/helicoptero.mp4",
-  "./video/montaña.mp4",
-  "./video/oceano.mp4",
+  "./video/helicoptero.webm",
+  "./video/montaña.webm",
+  "./video/oceano.webm",
 ];
 let current = 0;
 
-document.querySelector("#app").innerHTML = `
-  ${App(VIDEOS_ARRAY[current])}
-
-`;
+document.querySelector("#app").innerHTML = App(VIDEOS_ARRAY[current]);
 
 // Elements
 let VIDEO = document.getElementById("video");
@@ -19,12 +16,21 @@ const PLAY_ICON = document.getElementById("play");
 const FORWARD = document.querySelector(".fa-forward ");
 const BACKWARD = document.querySelector(".fa-backward");
 const FULL_DISPLAY = document.getElementById("expand");
-document.querySelector(".barra1").onclick = searchMinute;
+const LOADER = document.querySelector(".loader");
+document.querySelector(".barra-invisible").onclick = searchMinute;
 VIDEO.ontimeupdate = updateTime;
 VIDEO.onloadeddata = updateTime;
 VIDEO.onended = forward;
 
 // Play and Pause
+function loadVideo() {
+  VIDEO.src = VIDEOS_ARRAY[current];
+}
+loadVideo();
+VIDEO.addEventListener("loadeddata", function () {
+  LOADER.style.display = "none";
+  playVideo();
+});
 PLAY_ICON.addEventListener("click", playVideo);
 VIDEO.addEventListener("click", playVideo);
 
@@ -155,7 +161,7 @@ function conversion(seconds) {
 
 function searchMinute(e) {
   let onClick = e.offsetX;
-  let widthBrowser = document.querySelector(".barra1").offsetWidth;
+  let widthBrowser = document.querySelector(".barra-invisible").offsetWidth;
   let percentage = (100 * onClick) / widthBrowser;
   let position = Math.floor(VIDEO.duration * (percentage / 100));
   VIDEO.currentTime = position;

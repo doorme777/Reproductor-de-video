@@ -3,9 +3,12 @@ import "./styles.css";
 export function App(videos) {
   return `
         <video src="${videos}" id="video"></video>
+
         <div class="video-footer">
-            <div class="barra1">
-                <div class="barra2"></div>
+            <div class="barra-invisible">
+                <div class="barra1">
+                    <div class="barra2"></div>
+                </div>
             </div>
 
             <div class="controls">
@@ -21,6 +24,7 @@ export function App(videos) {
                 </div>
             </div>
         </div>
-
+        
+        <span class="loader"></span>
     `;
 }

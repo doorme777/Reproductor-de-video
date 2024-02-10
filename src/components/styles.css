@@ -4,9 +4,17 @@
   height: 99vh;
   width: 100%;
 }
-.barra1 {
-  height: 6px;
+
+.barra-invisible {
   width: 98%;
+  padding-block-start: 24px;
+  padding-block-end: 4px;
+}
+
+.barra1 {
+  margin-block: 12px;
+  height: 6px;
+  width: 100%;
   background-color: #888484;
   transition: 1.2s ease-in;
 }
@@ -52,4 +60,27 @@
 
 .estado {
   display: inline-block;
+}
+
+.loader {
+  position: absolute;
+  right: calc(50% - 34px);
+  top: 44%;
+  width: 48px;
+  height: 48px;
+  border: 5px solid #fff;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
