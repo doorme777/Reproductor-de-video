@@ -180,3 +180,5 @@ dist
 estilos.md
 
 # End of https://www.toptal.com/developers/gitignore/api/node,git,visualstudiocode
+# Local Netlify folder
+.netlify
