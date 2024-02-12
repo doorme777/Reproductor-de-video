@@ -23,7 +23,7 @@ export function App(videos) {
                 </div>
             </div>
         </div>
-        <video src="${videos}" id="video"></video>
+        <video src="${videos}" id="video" autoplay></video>
     </div>    
     <span class="loader"></span>
     `;
