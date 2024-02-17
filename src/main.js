@@ -71,6 +71,7 @@ const BACKWARD = document.querySelector(".fa-backward");
 const FULL_DISPLAY = document.getElementById("expand");
 const LOADER = document.querySelector(".loader");
 const CONTAINER = document.querySelector(".container");
+const VIDEO_FOOTER = document.querySelector(".video-footer");
 document.querySelector(".barra-invisible").onclick = searchMinute;
 VIDEO.ontimeupdate = updateTime;
 VIDEO.onloadeddata = updateTime;
@@ -89,6 +90,31 @@ VIDEO.addEventListener("play", () => {
 VIDEO.addEventListener("pause", () => {
   PLAY_ICON.classList.replace("fa-pause", "fa-play");
 });
+function ocultarVideoFooter() {
+  console.log("hola me voy a esconder")
+  timer = setTimeout(function() {
+    VIDEO_FOOTER.classList.add("hidden");
+    console.log("me escondi")
+  }, 1200);
+}
+
+// Función para restablecer el temporizador y mostrar el video-footer
+let timer;
+function mostrarVideoFooter() {
+  console.log("regrese");
+  clearTimeout(timer); 
+  VIDEO_FOOTER.classList.remove("hidden");
+  ocultarVideoFooter();
+}
+
+// Agregar un evento 'mousemove' a la etiqueta
+CONTAINER.addEventListener("mousemove", function(event) {
+  console.log("El mouse se está moviendo sobre la etiqueta");
+  mostrarVideoFooter(); // Mostrar el video-footer y restablecer el temporizador
+});
+
+// Iniciar el temporizador al cargar la página
+ocultarVideoFooter();
 
 // Keydown
 document.addEventListener("keydown", function (event) {
